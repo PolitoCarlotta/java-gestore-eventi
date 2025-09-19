@@ -1,6 +1,7 @@
 package eventi;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Evento implements Comparable<Evento> {
 
@@ -8,7 +9,7 @@ public class Evento implements Comparable<Evento> {
 
     private LocalDate data;
 
-    private int numeroPosti;
+    private final int numeroPosti;
 
     private int postiPrenotati;
 
@@ -67,6 +68,22 @@ public class Evento implements Comparable<Evento> {
         }
     }
 
+    public void prenota(){
+        if(data.isBefore(LocalDate.now()) || this.postiPrenotati == this.numeroPosti){
+            throw new IllegalArgumentException("L'evento è passato o abbiamo raggiunto il limite delle prenotazioni");
+        } else {
+            this.postiPrenotati ++;
+        }
+    }
+
+    public void disdici(){
+        if(data.isBefore(LocalDate.now()) || this.postiPrenotati == 0) {
+           throw new IllegalArgumentException("L'evento è passato o non ci sono prenotazioni da disdire"); 
+        } else {
+            this.postiPrenotati --;
+        }
+    }
+
     @Override
     public int compareTo(Evento o) {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -74,14 +91,9 @@ public class Evento implements Comparable<Evento> {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Evento{");
-        sb.append("titolo=").append(titolo);
-        sb.append(", data=").append(data);
-        sb.append(", numeroPosti=").append(numeroPosti);
-        sb.append(", postiPrenotati=").append(postiPrenotati);
-        sb.append('}');
-        return sb.toString();
+        DateTimeFormatter dataFormattata = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return data.format(dataFormattata) + " - " + this.titolo;
+
     }
 
     
