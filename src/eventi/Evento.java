@@ -5,6 +5,8 @@ import java.time.format.DateTimeFormatter;
 
 public class Evento implements Comparable<Evento> {
 
+    /* Attributi */
+
     private String titolo;
 
     private LocalDate data;
@@ -12,6 +14,8 @@ public class Evento implements Comparable<Evento> {
     private final int numeroPosti;
 
     private int postiPrenotati;
+
+    /* costruttore */
 
     public Evento(LocalDate data, int numeroPosti, String titolo) {
 
@@ -36,6 +40,8 @@ public class Evento implements Comparable<Evento> {
         this.postiPrenotati = 0;
     }
 
+    /* Getter */
+
     public String getTitolo() {
         return this.titolo;
     }
@@ -51,6 +57,8 @@ public class Evento implements Comparable<Evento> {
     public int getPostiPrenotati() {
         return this.postiPrenotati;
     }
+
+    /* Setter */
 
     public void setTitolo(String titolo) {
         if(titolo.isBlank() || titolo == null){
@@ -68,6 +76,8 @@ public class Evento implements Comparable<Evento> {
         }
     }
 
+    /* Prenota e disdici */
+
     public void prenota(){
         if(data.isBefore(LocalDate.now()) || this.postiPrenotati == this.numeroPosti){
             throw new IllegalArgumentException("L'evento è passato o abbiamo raggiunto il limite delle prenotazioni");
@@ -75,6 +85,17 @@ public class Evento implements Comparable<Evento> {
             this.postiPrenotati ++;
         }
     }
+
+    public void prenota (int posti){
+        if(posti<0){
+            throw new IllegalArgumentException("il numero delle prenotazioni non può essere negativo");
+        } else if (data.isBefore(LocalDate.now()) || this.postiPrenotati == this.numeroPosti || this.postiPrenotati + posti > this.numeroPosti){
+            throw new IllegalArgumentException("L'evento è passato o abbiamo raggiunto il limite delle prenotazioni");
+        } else {
+            this.postiPrenotati +=posti;
+        }
+    }
+
 
     public void disdici(){
         if(data.isBefore(LocalDate.now()) || this.postiPrenotati == 0) {
@@ -84,10 +105,22 @@ public class Evento implements Comparable<Evento> {
         }
     }
 
-    @Override
-    public int compareTo(Evento o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void disdici (int posti){
+        if(posti<0){
+            throw new IllegalArgumentException("il numero delle disdette non può essere negativo");
+        } else if (data.isBefore(LocalDate.now()) || this.postiPrenotati == 0 || this.postiPrenotati - posti < this.numeroPosti){
+            throw new IllegalArgumentException("L'evento è passato o non ci sono più prenotazioni da disdire");
+        } else {
+            this.postiPrenotati -=posti;
+        }
     }
+
+    public void postiDisponibili(){
+        System.out.println("I posti disponibili sono: " + (this.numeroPosti - this.postiPrenotati) + ", quelli prenotati: " + this.postiPrenotati);
+    }
+
+
+    /* To String */
 
     @Override
     public String toString() {
@@ -96,7 +129,10 @@ public class Evento implements Comparable<Evento> {
 
     }
 
-    
+    @Override
+    public int compareTo(Evento o) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 
 } 

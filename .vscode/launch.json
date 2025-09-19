@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "usaEvento",
+            "request": "launch",
+            "mainClass": "usaEvento",
+            "projectName": "java-gestore-eventi_8747aebe"
+        },
+        {
+            "type": "java",
+            "name": "testEvento",
+            "request": "launch",
+            "mainClass": "testEvento",
+            "projectName": "java-gestore-eventi_8747aebe"
+        },
+        {
+            "type": "java",
             "name": "App",
             "request": "launch",
             "mainClass": "eventi.App",
