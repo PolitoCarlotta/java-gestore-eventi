@@ -20,19 +20,19 @@ public class Evento implements Comparable<Evento> {
     }
 
     public String getTitolo() {
-        return titolo;
+        return this.titolo;
     }
 
     public LocalDate getData() {
-        return data;
+        return this.data;
     }
 
     public int getNumeroPosti() {
-        return numeroPosti;
+        return this.numeroPosti;
     }
 
     public int getPostiPrenotati() {
-        return postiPrenotati;
+        return this.postiPrenotati;
     }
 
     public void setTitolo(String titolo) {
