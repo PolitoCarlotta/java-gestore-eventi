@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "UsaConcerto",
+            "request": "launch",
+            "mainClass": "UsaConcerto",
+            "projectName": "java-gestore-eventi_8747aebe"
+        },
+        {
+            "type": "java",
             "name": "usaEvento",
             "request": "launch",
             "mainClass": "usaEvento",
