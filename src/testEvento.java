@@ -65,6 +65,8 @@ public class testEvento {
             
             eventoUtente.postiDisponibili();
 
+            input.close();
+
 
         
 
