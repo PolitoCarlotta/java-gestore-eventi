@@ -57,7 +57,7 @@ public class Concerto extends Evento{
 
     public String getDataOraFormattata(){
         LocalDateTime dataOra = LocalDateTime.of(super.getData(), this.ora);
-        DateTimeFormatter dataOraFromattata = DateTimeFormatter.ofPattern("'Il 'dd/MM/yyyy, ' alle ' HH:mm");
+        DateTimeFormatter dataOraFromattata = DateTimeFormatter.ofPattern("dd/MM/yyyy,' alle 'HH:mm");
         return dataOraFromattata.format(dataOra);
     }
 
@@ -66,10 +66,13 @@ public class Concerto extends Evento{
         return prezzoFormattato.format(this.prezzo);
     }
 
-/*     @Override
+    @Override
     public String toString() {
-;
-    } */
+        return "Il concerto sarà: " + getDataOraFormattata() + " - " + getTitolo()
+                + " - " + getPrezzoFormattato();
+    }
+
+    
 
     
 

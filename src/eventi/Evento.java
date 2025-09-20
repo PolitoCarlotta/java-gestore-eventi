@@ -61,7 +61,7 @@ public class Evento implements Comparable<Evento> {
     /* Setter */
 
     public void setTitolo(String titolo) {
-        if(titolo.isBlank() || titolo == null){
+        if(titolo == null || titolo.isBlank()){
             throw new IllegalArgumentException("Il titolo inserito non è valido!");
         } else {
             this.titolo = titolo;
@@ -69,7 +69,7 @@ public class Evento implements Comparable<Evento> {
     }
 
     public void setData(LocalDate data) {
-                if(data.isBefore(LocalDate.now()) || data == null){
+                if(data == null || data.isBefore(LocalDate.now())){
             throw new IllegalArgumentException("La data è obbligatoria e non deve essere antecedente la data odierna!");
         }else{
             this.data = data;
@@ -108,15 +108,15 @@ public class Evento implements Comparable<Evento> {
     public void disdici (int posti){
         if(posti<0){
             throw new IllegalArgumentException("il numero delle disdette non può essere negativo");
-        } else if (data.isBefore(LocalDate.now()) || this.postiPrenotati == 0 || this.postiPrenotati - posti < this.numeroPosti){
+        } else if (data.isBefore(LocalDate.now()) || this.postiPrenotati == 0 || this.postiPrenotati - posti < 0){
             throw new IllegalArgumentException("L'evento è passato o non ci sono più prenotazioni da disdire");
         } else {
             this.postiPrenotati -=posti;
         }
     }
 
-    public void postiDisponibili(){
-        System.out.println("I posti disponibili sono: " + (this.numeroPosti - this.postiPrenotati) + ", quelli prenotati: " + this.postiPrenotati);
+    public String postiDisponibili(){
+        return "I posti disponibili sono: " + (this.numeroPosti - this.postiPrenotati) + ", quelli prenotati: " + this.postiPrenotati;
     }
 
 
