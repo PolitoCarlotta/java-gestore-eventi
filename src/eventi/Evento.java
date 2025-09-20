@@ -131,8 +131,18 @@ public class Evento implements Comparable<Evento> {
 
     @Override
     public int compareTo(Evento o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(this.data.compareTo(o.data) < 0 && this.titolo.compareTo(o.titolo) <0){
+            return - 2;
+        } else if (this.data.compareTo(o.data) < 0 && this.titolo.compareTo(o.titolo) >= 0){
+            return -1;
+        } else {
+            return +1;
+        }
     }
+
+
+
     
-    
+
+
 } 

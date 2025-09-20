@@ -68,7 +68,7 @@ public class Concerto extends Evento{
 
     @Override
     public String toString() {
-        return "Il concerto sarà: " + getDataOraFormattata() + " - " + getTitolo()
+        return getDataOraFormattata() + " - " + getTitolo()
                 + " - " + getPrezzoFormattato();
     }
 

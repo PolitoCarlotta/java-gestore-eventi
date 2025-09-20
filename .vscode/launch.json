@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "provaProgramma",
+            "request": "launch",
+            "mainClass": "provaProgramma",
+            "projectName": "java-gestore-eventi_8747aebe"
+        },
+        {
+            "type": "java",
             "name": "UsaConcerto",
             "request": "launch",
             "mainClass": "UsaConcerto",
