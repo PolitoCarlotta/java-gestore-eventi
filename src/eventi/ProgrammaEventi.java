@@ -11,7 +11,7 @@ public class ProgrammaEventi {
 
     private String titolo;
 
-    private List<Evento> eventi;
+    private final List<Evento> eventi;
 
 
     /* Costruttore */

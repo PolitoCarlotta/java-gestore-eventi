@@ -39,6 +39,8 @@ public class usaEvento {
         e2.postiDisponibili();
 
 
+        Triangolo t1 = new Triangolo(4);
+        t1.stampa();
     }
 
 }
